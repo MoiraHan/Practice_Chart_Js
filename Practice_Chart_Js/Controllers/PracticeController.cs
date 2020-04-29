@@ -12,6 +12,16 @@ namespace Practice_Chart_Js.Controllers
         public ActionResult Index()
         {
             return View();
-        }      
+        }
+
+        public ActionResult Radar_BasicAndChangeSize()
+        {
+            return View();
+        }
+
+        public ActionResult Radar_PlayerFromJson()
+        {
+            return View();
+        }
     }
 }

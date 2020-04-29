@@ -1,0 +1,36 @@
+﻿
+@media (max-width: 768px) {
+    .chart-container {
+        position: relative;
+        margin: auto;
+        height: 300px;
+        width: 300px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .chart-container {
+        position: relative;
+        margin: auto;
+        height: 500px;
+        width: 500px;
+    }
+}
+
+@media (min-width: 992px) {
+    .chart-container {
+        position: relative;
+        margin: auto;
+        height: 500px;
+        width: 500px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .chart-container {
+        position: relative;
+        margin: auto;
+        height: 600px;
+        width: 600px;
+    }
+}

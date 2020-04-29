@@ -1,0 +1,172 @@
+﻿
+@{
+    ViewBag.Title = "Radar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Radar - 隨機產生角色 ( From Json )</h2>
+
+<head>
+    @section styles{
+        <link href="~/Content/Custom.css" rel="stylesheet" />
+    }
+    @section scripts{
+        <script src="~/Scripts/Chart.js/Chart.min.js"></script>
+    }
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-2">
+                <button class="btn btn-info" onclick="AddPlayer_Random()">Go !</button>
+            </div>
+            <div class="col-xs-12 col-lg-2">
+                <div class="chart-container">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function AddPlayer_Random() {
+        ResetCanvas();
+
+        let dataJsonArray = RandomPlayerData_Ver2();
+
+        let ctx = document.getElementById('myChart');
+
+        let myRadarChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: GetLabelArray(),
+                datasets: dataJsonArray
+            },
+            options: {
+                //responsive: false, // 依照畫布(canvas)調整大小
+                maintainAspectRatio: false, // 調整大小時，保持原始畫布的寬高比，若要更改 Size，必須調整成 false。
+                scale: {
+                    // Label 的字體尺寸
+                    pointLabels: {
+                        fontSize: 15
+                    },
+                    // 刻度
+                    ticks: {
+                        // 圖的數值 Range
+                        min: 1,
+                        max: 99,
+                        fontSize: 14,
+                    }
+                },
+            }
+        });
+
+    }
+
+    // 重設畫布的方法
+    function ResetCanvas() {
+        // 清空 chart container 的內容
+        let chart_container = $(".chart-container");
+        if (chart_container != null)
+            chart_container.empty();
+
+        // 加入新的畫布
+        chart_container.append('<canvas id="myChart"></canvas>');
+    }
+
+    function GetLabelArray() {
+        return ['力量', '敏捷', '體力', '智慧', '靈巧', '幸運'];
+    }
+
+    function RandomPlayerData_Ver2() {
+        let result = [];
+
+        for (let i = 0; i < 4; i++) {
+            let data = {
+                'pointBorderWidth': 2, // 點寬
+                'borderWidth': 3, // 線寬
+                'backgroundColor': RandomColor_Rgba_transparent_0(),
+                'borderColor': RandomColor_Rgba_transparent_0_6(),
+                'data': [
+                    Math.floor(Math.random() * 99) + 1, // 力量
+                    Math.floor(Math.random() * 99) + 1, // 敏捷
+                    Math.floor(Math.random() * 99) + 1, // 體力
+                    Math.floor(Math.random() * 99) + 1, // 智慧
+                    Math.floor(Math.random() * 99) + 1, // 靈巧
+                    Math.floor(Math.random() * 99) + 1, // 幸運
+                ],
+                'label': RandomJob() + '-' + RandomNickname()
+            };
+
+            result.push(data);
+        }
+
+        return result;
+    }
+
+    //function RandomPlayerData() {
+    //    let result = [];
+
+    //    for (let i = 0; i < 2; i++) {
+    //        let data = {
+    //            'BackgroundColor': RandomColor_Rgba_transparent_0_4(),
+    //            'BorderColor': RandomColor_Rgba_transparent_0_6(),
+    //            'Attributes': {
+    //                "STR": Math.floor(Math.random() * 99) + 1,
+    //                "AGI": Math.floor(Math.random() * 99) + 1,
+    //                "VIT": Math.floor(Math.random() * 99) + 1,
+    //                "INT": Math.floor(Math.random() * 99) + 1,
+    //                "DEX": Math.floor(Math.random() * 99) + 1,
+    //                "LUK": Math.floor(Math.random() * 99) + 1,
+    //            },
+    //            'Job': RandomJob()
+    //        };
+
+    //        result.push(data);
+    //    }
+
+    //    return result;
+    //}
+
+    function RandomNickname() {
+        let nameArray = ['無法顯示人物名稱', '銅鑼灣扛報紙', '汗味戰警', '左青龍右胖虎', '靈車甩尾棺材飛',
+            '媽你看爸在飛', '怕滑落地', '頭蚊子叮', '紅衣小男孩', '九頭龍閃到腰',
+            '善解人衣', '剛好五個字', '打死我也不說', '媽媽來了快關電腦', '怪很強我先走',
+            '差一元買多多', '說好不打臉', '不要問 你會怕', '拉鍊裡的猛獸',
+            '你看不見我', '轉角遇到怪', '放個屁就', '你點到我了', '抱歉沒點補',
+            '網路連線中斷', '拿佛珠砸耶穌', '你已經死了', '綠油精點眼睛', '屎亡筆記本',
+            '關完大哥關二哥', '放屁給你聞', '你在大聲什麼啦', '蒙奇D能兒', '名子剛好七個字',
+            '苗栗小五郎', 'AI人工智障', '放屁給你聞', '蒙其D罩杯',
+            '老爺不可以', '夫人會生氣', '憂鬱肉燥飯', '被冰塊燙傷',
+            '麻辣白開水', '涼麵趁熱吃']
+
+        let nameIndex = Math.floor(Math.random() * (nameArray.length));
+        return nameArray[nameIndex];
+    }
+
+    function RandomJob() {
+        let jobArray = ['法師', '盜賊', '劍士', '弓箭手', '商人', '祭司'];
+        let jobIndex = Math.floor(Math.random() * (jobArray.length));
+        return jobArray[jobIndex];
+    }
+
+    function RandomColor_Rgba_transparent_0() {
+        return 'rgba(0,0,0,0)';
+    }
+
+    function RandomColor_Rgba_transparent_0_4() {
+        let r = Math.floor(Math.random() * 255); // Random between 0-255
+        let g = Math.floor(Math.random() * 255); // Random between 0-255
+        let b = Math.floor(Math.random() * 255); // Random between 0-255
+        return 'rgba(' + r + ',' + g + ',' + b + ',0.4' + ')'; // Collect all to a string
+    }
+
+    function RandomColor_Rgba_transparent_0_6() {
+        let r = Math.floor(Math.random() * 255); // Random between 0-255
+        let g = Math.floor(Math.random() * 255); // Random between 0-255
+        let b = Math.floor(Math.random() * 255); // Random between 0-255
+        return 'rgba(' + r + ',' + g + ',' + b + ',0.6' + ')'; // Collect all to a string
+    }
+</script>
