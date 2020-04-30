@@ -125,6 +125,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\JsonStringHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +147,7 @@
     <Content Include="Scripts\Chart.js\Chart.bundle.min.js" />
     <Content Include="Scripts\Chart.js\Chart.js" />
     <Content Include="Scripts\Chart.js\Chart.min.js" />
+    <Content Include="Scripts\Custom_Draw.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -173,6 +175,7 @@
     <Content Include="Views\Practice\Index.cshtml" />
     <Content Include="Views\Practice\Radar_BasicAndChangeSize.cshtml" />
     <Content Include="Views\Practice\Radar_PlayerFromJson.cshtml" />
+    <Content Include="Views\Practice\Radar_PlayerFromBack.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
