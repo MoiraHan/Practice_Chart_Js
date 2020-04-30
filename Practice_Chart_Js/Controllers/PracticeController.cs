@@ -16,6 +16,11 @@ namespace Practice_Chart_Js.Controllers
             return View();
         }
 
+        public ActionResult Mixed_BasicAndChangeSize()
+        {            
+            return View();
+        }
+
         public ActionResult Radar_BasicAndChangeSize()
         {
             return View();
@@ -32,23 +37,22 @@ namespace Practice_Chart_Js.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetPlayerDataJson()
+        public JsonResult GetDrawPlayerDataJson()
         {
-            /// ↓用這個方法丟給前端，顏色會有問題 = =+ 都是黑色
-            //var random = new Random(new Guid().GetHashCode());
+            var random = new Random(new Guid().GetHashCode());
 
-            //// 把 Player 的資料轉成畫圖要用的資料
-            //var result = GetPlayers().Select(x => new
-            //{
-            //    pointBorderWidth = 2,// 點寬
-            //    borderWidth = 3,// 線寬
-            //    backgroundColor = $"rbga(0,0,0,0)", // 透明
-            //    borderColor = $"rbga({random.Next(0, 255)}, {random.Next(0, 255)},{random.Next(0, 255)},0.6)",
-            //    data = new List<int>() { x.STR, x.AGI, x.VIT, x.INT, x.DEX, x.LUK },
-            //    label = $"{x.Job}-{x.NickName}",
-            //});
+            // 把 Player 的資料轉成畫圖要用的資料
+            var result = GetPlayers().Select(x => new
+            {
+                pointBorderWidth = 2,// 點寬
+                borderWidth = 3,// 線寬
+                backgroundColor = $"rgba(0,0,0,0)", // 透明
+                borderColor = $"rgba({random.Next(0, 255)}, {random.Next(0, 255)},{random.Next(0, 255)},0.6)",
+                data = new List<int>() { x.STR, x.AGI, x.VIT, x.INT, x.DEX, x.LUK },
+                label = $"{x.Job}-{x.Nickname}",
+            });
 
-            return Json(GetPlayers());
+            return Json(result);
         }
 
 

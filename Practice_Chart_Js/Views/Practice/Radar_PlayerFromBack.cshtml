@@ -34,44 +34,16 @@
 <script>
     function GetPlayerDataAndDraw() {
        $.ajax({
-            url: '@Url.Action("GetPlayerDataJson", "Practice")',
+            url: '@Url.Action("GetDrawPlayerDataJson", "Practice")',
             contentType: "application/json",
             type: 'post',
            success: function (result) {
-               let drawData = GetDrawRaderData(result);
-               DrawRader(drawData);
-               console.log(drawData);
+               DrawRader(result);               
             },
             Error: function (xhr) {
 
             }
         })
-    }
-
-    function GetDrawRaderData(jsonData) {        
-        let result = [];
-
-        for (let i = 0; i < jsonData.length; i++) {            
-            let data = {
-                'pointBorderWidth': 2, // 點寬
-                'borderWidth': 3, // 線寬
-                'backgroundColor': RandomColor_Rgba_transparent_0(),
-                'borderColor': RandomColor_Rgba_transparent_0_6(),
-                'data': [
-                    jsonData[i].STR, // 力量
-                    jsonData[i].AGI, // 敏捷
-                    jsonData[i].VIT, // 體力
-                    jsonData[i].INT, // 智慧
-                    jsonData[i].DEX, // 靈巧
-                    jsonData[i].LUK, // 幸運                 
-                ],
-                'label': jsonData[i].Job + '-' + jsonData[i].Nickname
-            };
-
-            result.push(data);
-        }
-
-        return result;
     }
 
     function DrawRader(dataJsonArray) {

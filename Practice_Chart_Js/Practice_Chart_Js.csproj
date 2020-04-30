@@ -176,6 +176,7 @@
     <Content Include="Views\Practice\Radar_BasicAndChangeSize.cshtml" />
     <Content Include="Views\Practice\Radar_PlayerFromJson.cshtml" />
     <Content Include="Views\Practice\Radar_PlayerFromBack.cshtml" />
+    <Content Include="Views\Practice\Mixed_BasicAndChangeSize.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
