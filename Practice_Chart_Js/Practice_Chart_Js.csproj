@@ -177,10 +177,12 @@
     <Content Include="Views\Practice\Radar_PlayerFromJson.cshtml" />
     <Content Include="Views\Practice\Radar_PlayerFromBack.cshtml" />
     <Content Include="Views\Practice\Mixed_BasicAndChangeSize.cshtml" />
+    <Content Include="Views\Practice\InputImageToBackEnd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="SaveChartJsImage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -194,6 +196,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Tool\MoiraTools\MoiraTools\MoiraTools.csproj">
+      <Project>{96387B3D-88B3-4222-BCB3-952BB901D30B}</Project>
+      <Name>MoiraTools</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

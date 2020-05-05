@@ -1,9 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using MoiraTools.CustomClass;
+using MoiraTools.Extensions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Mvc;
 
 namespace Practice_Chart_Js.Controllers
@@ -34,6 +37,19 @@ namespace Practice_Chart_Js.Controllers
         public ActionResult Radar_PlayerFromBack()
         {
             return View();
+        }
+
+        public ActionResult InputImageToBackEnd()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult InputImageToBackEnd(string image_Base64)
+        {
+            Base64Object base64Object = new Base64Object(image_Base64);
+            base64Object.SaveImage_Png(HostingEnvironment.MapPath("~/SaveChartJsImage/test.png"));
+            return Content("Success !");
         }
 
         [HttpPost]
