@@ -48,7 +48,7 @@ namespace Practice_Chart_Js.Controllers
         public ActionResult InputImageToBackEnd(string image_Base64)
         {
             Base64Object base64Object = new Base64Object(image_Base64);
-            base64Object.SaveImage_Png(HostingEnvironment.MapPath("~/SaveChartJsImage/test.png"));
+            base64Object.SaveImage_Jpg(HostingEnvironment.MapPath("~/SaveChartJsImage/test.jpg"));
             return Content("Success !");
         }
 
