@@ -42,7 +42,7 @@
                 datasets: [{
                     label: null,
                     data: [82, 64, 89, 71, 100, 88],
-                    backgroundColor: 'rgba(13, 170, 195, 0.4)',
+                    backgroundColor: 'rgba(13, 170, 195, 0.1)',
                     borderColor: 'rgba(13, 170, 195, 0.6)',
                     pointBorderWidth: 3, // 點寬                 
                     borderWidth: 3, // 線寬
@@ -61,6 +61,10 @@
                         fontSize: 15,
                         fontStyle: 'bold', // 粗體
                         fontColor: 'black', // 黑色
+                    },
+                    gridLines: {
+                        // 雷達圖底線的顏色，支援多種顏色 ( Ex. color: ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo'] )
+                        color: 'DarkGray'
                     },
                     // 刻度
                     ticks: {
