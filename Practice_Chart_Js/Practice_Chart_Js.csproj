@@ -122,6 +122,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PracticeController.cs" />
+    <Compile Include="CustomClass\Base64Object.cs" />
+    <Compile Include="Extensions\Base64ObjectExtension.cs" />
+    <Compile Include="Extensions\UrlHelperExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -196,12 +199,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Tool\MoiraTools\MoiraTools\MoiraTools.csproj">
-      <Project>{96387B3D-88B3-4222-BCB3-952BB901D30B}</Project>
-      <Name>MoiraTools</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
